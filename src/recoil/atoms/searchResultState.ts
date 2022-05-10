@@ -2,6 +2,6 @@ import { atom } from 'recoil';
 import { ISearchResult } from '../../utils/Interfaces';
 
 export const searchResultState = atom<ISearchResult | undefined>({
-  key: 'searchResultState',
+  key: '#searchResultState',
   default: undefined,
 });
