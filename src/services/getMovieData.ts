@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getMovieData = (searchValue: string, page: number) => {
+export const getMovieData = (searchValue: string, page: number) =>
   axios({
     method: 'GET',
     params: {
@@ -10,4 +10,3 @@ export const getMovieData = (searchValue: string, page: number) => {
     },
     url: process.env.REACT_APP_API_URL,
   });
-};
