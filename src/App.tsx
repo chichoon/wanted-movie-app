@@ -1,12 +1,16 @@
-import './App.scss';
 import { Router } from './Router';
+import { RecoilRoot } from 'recoil';
+
+import './App.scss';
 import './styles/index.scss';
 
 const App = () => {
   return (
-    <div className='app'>
-      <Router />
-    </div>
+    <RecoilRoot>
+      <div className='app'>
+        <Router />
+      </div>
+    </RecoilRoot>
   );
 };
 
