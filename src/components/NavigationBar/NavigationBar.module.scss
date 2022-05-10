@@ -1,9 +1,38 @@
+@use '/src/styles/constants/colors';
 @import '/src/styles/mixins/flexbox';
 
 .navBar {
   @include flexbox(center, center);
-  flex-direction: column;
+  position: fixed;
+  bottom: 0;
   width: 100vw;
-  height: 5rem;
-  background-color: aliceblue;
+  height: 4rem;
+  background-color: colors.$WHITE;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 30%);
+}
+
+.navList {
+  @include flexbox(center, center);
+  flex-direction: row;
+  width: 50vw;
+  height: 4rem;
+}
+
+.navTab {
+  width: 25vw;
+
+  button {
+    @include flexbox(center, center);
+    flex-direction: column;
+    width: 25vw;
+    height: 4rem;
+    font-size: 1.5rem;
+    list-style: none;
+  }
+
+  button:hover {
+    cursor: pointer;
+    border-top: 0.3rem solid colors.$NAVTAB_TOP;
+    transition: 0.2s;
+  }
 }

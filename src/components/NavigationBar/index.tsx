@@ -3,9 +3,13 @@ import styles from './NavigationBar.module.scss';
 export const NavigationBar = () => {
   return (
     <nav className={styles.navBar}>
-      <ul className={styles.navUl}>
-        <li className={styles.navTab}>검색하기</li>
-        <li className={styles.navTab}>즐겨찾기</li>
+      <ul className={styles.navList}>
+        <li className={styles.navTab}>
+          <button type='button'>검색하기</button>
+        </li>
+        <li className={styles.navTab}>
+          <button type='button'>즐겨찾기</button>
+        </li>
       </ul>
     </nav>
   );
