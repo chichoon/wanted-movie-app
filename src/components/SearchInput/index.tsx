@@ -23,7 +23,7 @@ export const SearchInput = (): JSX.Element => {
     <div className={styles.searchInput}>
       <form className={styles.searchForm} onSubmit={handleSubmit}>
         <SearchIcon className={styles.searchIcon} />
-        <input type='text' value={searchValue} placeholder='영화 제목을 입력하세요' onChange={handleInputChange} />
+        <input type='text' value={inputValue} placeholder='영화 제목을 입력하세요' onChange={handleInputChange} />
         <button type='submit'>검색</button>
       </form>
     </div>
