@@ -1,11 +1,10 @@
-import React from 'react';
 import './App.css';
-import { TestComponent } from './components';
+import { Router } from './Router';
 
 const App = () => {
   return (
     <div className='App'>
-      <TestComponent />
+      <Router />
     </div>
   );
 };
