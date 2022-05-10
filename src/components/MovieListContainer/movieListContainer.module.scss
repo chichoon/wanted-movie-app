@@ -3,7 +3,7 @@
 .movieContainer {
   width: 40rem;
   height: 30rem;
+  overflow: scroll;
   background-color: colors.$WHITE;
   border-radius: 1rem;
-  overflow: scroll;
 }
