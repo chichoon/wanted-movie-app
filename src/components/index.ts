@@ -1,4 +1,5 @@
 import { NavigationBar } from './NavigationBar';
 import { SearchInput } from './SearchInput';
+import { MovieListContainer } from './MovieListContainer';
 
-export { NavigationBar, SearchInput };
+export { NavigationBar, SearchInput, MovieListContainer };

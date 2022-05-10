@@ -1,0 +1,8 @@
+@use '/src/styles/constants/colors';
+
+.movieContainer {
+  width: 40rem;
+  height: 30rem;
+  background-color: colors.$WHITE;
+  border-radius: 1rem;
+}
