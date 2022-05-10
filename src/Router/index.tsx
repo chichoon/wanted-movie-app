@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { TestComponent } from '../components';
-import { NavigationBar } from '../components/NavigationBar';
+import { NavigationBar } from '../components';
+import { FavoritePage, MainPage } from '../pages';
 
 export const Router = () => {
   return (
     <BrowserRouter>
+      <NavigationBar />
       <Routes>
-        <Route path='/' element={<NavigationBar />}>
-          <Route path='/' element={<TestComponent />} />
-        </Route>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/favorites' element={<FavoritePage />} />
       </Routes>
     </BrowserRouter>
   );

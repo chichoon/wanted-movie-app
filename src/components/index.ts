@@ -1,3 +1,3 @@
-import TestComponent from './TestComponent';
+import { NavigationBar } from './NavigationBar/index';
 
-export { TestComponent };
+export { NavigationBar };
