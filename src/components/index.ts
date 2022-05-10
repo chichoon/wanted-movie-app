@@ -1,3 +1,4 @@
-import { NavigationBar } from './NavigationBar/index';
+import { NavigationBar } from './NavigationBar';
+import { SearchInput } from './SearchInput';
 
-export { NavigationBar };
+export { NavigationBar, SearchInput };

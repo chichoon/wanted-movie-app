@@ -1,0 +1,13 @@
+@use '/src/styles/constants/colors';
+
+.searchInput {
+  width: 40rem;
+  height: 4rem;
+
+  border: 2px solid colors.$WHITE;
+  border-radius: 50%;
+
+  input {
+    border: none;
+  }
+}
