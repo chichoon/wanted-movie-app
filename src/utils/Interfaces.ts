@@ -1,13 +1,18 @@
 export interface IMovie {
-  Title: String;
-  Year: String;
-  imdbID: String;
-  Type: String;
-  Poster: String;
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
 }
 
 export interface ISearchResult {
-  search: Array<IMovie>;
+  Search: Array<IMovie>;
   totalResults: number;
-  response: boolean;
+  Response: boolean;
+}
+
+export interface IFavoriteData {
+  Movies: Array<IMovie>;
+  imdbIDs: Array<string>;
 }
