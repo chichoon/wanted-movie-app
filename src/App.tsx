@@ -1,10 +1,10 @@
-import './App.css';
+import './App.scss';
 import { Router } from './Router';
 import './styles/index.scss';
 
 const App = () => {
   return (
-    <div className='App'>
+    <div className='app'>
       <Router />
     </div>
   );
