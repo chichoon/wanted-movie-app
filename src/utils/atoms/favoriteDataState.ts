@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { IFavoriteData } from '../../utils/Interfaces';
+import { IFavoriteData } from '../Interfaces';
 
 export const favoriteDataState = atom<IFavoriteData>({
   key: '#favoriteDataState',
