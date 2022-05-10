@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SearchIcon } from '../../assets/svgs';
 import styles from './SearchInput.module.scss';
 
-export const SearchInput: React.FC = () => {
+export const SearchInput = (): JSX.Element => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

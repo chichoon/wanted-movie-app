@@ -1,7 +1,7 @@
 import { MovieListContainer, SearchInput } from '../../components';
 import styles from './MainPage.module.scss';
 
-export const MainPage: React.FC = () => {
+export const MainPage = (): JSX.Element => {
   return (
     <div className={styles.mainPage}>
       <SearchInput />
