@@ -1,12 +1,20 @@
 import { useState } from 'react';
+import { SearchIcon } from '../../assets/svgs';
 import styles from './SearchInput.module.scss';
 
 export const SearchInput: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.currentTarget.value);
+  };
+
   return (
     <div className={styles.searchInput}>
-      <input type='text' value={searchValue} />
+      <form className={styles.searchForm}>
+        <SearchIcon className={styles.searchIcon} />
+        <input type='text' value={searchValue} placeholder='영화 제목을 입력하세요' onChange={handleInputChange} />
+      </form>
     </div>
   );
 };
