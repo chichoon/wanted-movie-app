@@ -6,7 +6,7 @@ import { useFetchMovie } from '../../utils/hooks/useFetchMovie';
 import { MovieBlock } from '../MovieBlock';
 import { LoadingComponent } from './LoadingComponent';
 
-import styles from './MovieListContainer.module.scss';
+import styles from './movieListContainer.module.scss';
 
 export const MovieListContainer = (): JSX.Element => {
   const [searchPage, setSearchPage] = useState(1);

@@ -1,4 +1,4 @@
-import styles from './NavigationBar.module.scss';
+import styles from './navigationBar.module.scss';
 
 export const NavigationBar = () => {
   return (
