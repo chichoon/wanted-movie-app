@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import { searchValueState } from '../../utils/atoms/searchValueState';
 
@@ -8,7 +8,7 @@ import styles from './SearchInput.module.scss';
 
 export const SearchInput = (): JSX.Element => {
   const [inputValue, setinputValue] = useState('');
-  const [searchValue, setSearchValue] = useRecoilState(searchValueState);
+  const setSearchValue = useSetRecoilState(searchValueState);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setinputValue(e.currentTarget.value);
