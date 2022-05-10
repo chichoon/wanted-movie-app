@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { NavigationBar } from '../components';
-import { FavoritePage, MainPage } from '../pages';
+import { NavigationBar } from './components';
+import { FavoritePage, MainPage } from './pages';
 
 export const Router = () => {
   return (
