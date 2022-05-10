@@ -5,8 +5,8 @@
   @include flexbox(center, start);
   width: 40rem;
   height: 4rem;
-  border: 3px solid colors.$WHITE;
   background-color: colors.$WHITE30P;
+  border: 3px solid colors.$WHITE;
   border-radius: 2rem;
 }
 
@@ -30,6 +30,18 @@
 
     &::placeholder {
       color: colors.$BLACK30P;
+    }
+  }
+
+  button {
+    width: 3rem;
+    height: 2rem;
+    background-color: colors.$WHITE;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: colors.$SEARCH_BTN_HOVER;
     }
   }
 }
