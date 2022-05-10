@@ -1,5 +1,6 @@
 import './App.css';
 import { Router } from './Router';
+import './styles/index.scss';
 
 const App = () => {
   return (
