@@ -1,0 +1,9 @@
+@import '/src/styles/mixins/flexbox';
+
+.navBar {
+  @include flexbox(center, center);
+  flex-direction: column;
+  width: 100vw;
+  height: 5rem;
+  background-color: aliceblue;
+}
