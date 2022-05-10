@@ -14,6 +14,7 @@ export const SearchInput: React.FC = () => {
       <form className={styles.searchForm}>
         <SearchIcon className={styles.searchIcon} />
         <input type='text' value={searchValue} placeholder='영화 제목을 입력하세요' onChange={handleInputChange} />
+        <button type='submit'>검색</button>
       </form>
     </div>
   );
