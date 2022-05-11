@@ -4,10 +4,9 @@ import { useRecoilValue } from 'recoil';
 import { searchLoadingState } from '../../utils/atoms';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { MovieBlock } from '../MovieBlock';
-import { LoadingMessage } from './LoadingMessage';
 
 import styles from './movieListContainer.module.scss';
-import { ErrorMessage } from './ErrorMessage';
+import { ContainerMessage } from './ContainerMessage';
 
 export const MovieListContainer = (): JSX.Element => {
   const [searchPage, setSearchPage] = useState(1);
@@ -15,8 +14,8 @@ export const MovieListContainer = (): JSX.Element => {
   const searchResult = useFetchMovie(searchPage);
 
   const renderMovieContainer = (): JSX.Element | null => {
-    if (loading) return <LoadingMessage />;
-    if (searchResult?.Response === 'False') return <ErrorMessage errorString={searchResult?.Error} />;
+    if (loading || searchResult?.Response === 'False')
+      return <ContainerMessage loading={loading} message={searchResult?.Error} />;
     return (
       <ul className={styles.movieList}>
         {searchResult?.Search?.map((v, i) => {

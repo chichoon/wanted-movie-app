@@ -9,7 +9,7 @@
   border-radius: 1rem;
 }
 
-.errorMessage {
+.containerMessage {
   @include flexbox(center, center);
   flex-direction: column;
   width: inherit;
