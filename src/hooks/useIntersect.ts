@@ -16,9 +16,9 @@ export const useIntersect = (onIntersectFunc: () => void, threshold: number) => 
 
   useEffect(() => {
     let observer: IntersectionObserver;
-    if (target) {
+    if (target && target.current) {
       observer = new IntersectionObserver(onIntersect, { threshold });
-      target.current && observer.observe(target.current);
+      observer.observe(target.current);
     }
     return () => observer && observer.disconnect();
   }, [target, threshold, onIntersect]);
