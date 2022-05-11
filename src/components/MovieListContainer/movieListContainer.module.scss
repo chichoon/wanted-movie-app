@@ -5,19 +5,19 @@
 .movieContainer {
   width: 40rem;
   height: 30rem;
-  overflow: hidden;
+  overflow: scroll;
   background-color: colors.$WHITE;
   border-radius: 1rem;
 
-  .movieList {
-    width: 40rem;
-    height: 30rem;
-    overflow: scroll;
-  }
-
   .loadingRef {
-    height: 3rem;
-    background-color: aqua;
+    height: 4rem;
+    padding: 0.5rem;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      fill: colors.$TITLE;
+    }
   }
 }
 

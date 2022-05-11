@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
+import { LoadingIcon } from '../../assets/svgs';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
 import { useIntersect } from '../../hooks/useIntersect';
 
@@ -19,10 +20,14 @@ export const MovieListContainer = (): JSX.Element => {
   });
   const [pages, setPages] = useState(1);
   const [movieArray, setMovieArray] = useState<IMovie[]>([]);
+  const [isNextPage, setIsNextPage] = useState(true);
   const searchValue = useRecoilValue(searchValueState);
 
   const getMoreMovie = async () => {
-    if (searchResult.totalResults && searchResult.totalResults < pages * 10) return;
+    if (searchResult.totalResults && searchResult.totalResults < pages * 10) {
+      setIsNextPage(false);
+      return;
+    }
     const responseData = await getMovieData(searchValue, pages + 1);
     setSearchResult((prevState) => ({
       Response: responseData?.Response,
@@ -32,16 +37,20 @@ export const MovieListContainer = (): JSX.Element => {
     setMovieArray((prevState) => prevState.concat(responseData?.Search));
     setPages((prevState) => prevState + 1);
   };
-  const target = useIntersect(getMoreMovie, 0.7);
+  const intersectTarget = useIntersect(getMoreMovie, 0.8);
 
   useEffect(() => {
     setSearchResult({
       Response: firstMovieData?.Response ?? null,
       totalResults: firstMovieData?.totalResults,
-      Error: firstMovieData?.Error ?? '',
+      Error: firstMovieData?.Error,
     });
     setMovieArray(firstMovieData?.Search ?? []);
-  }, [firstMovieData, searchValue]);
+  }, [firstMovieData]);
+
+  useEffect(() => {
+    setMovieArray([]);
+  }, [searchValue]);
 
   const renderMovieContainer = (): JSX.Element | null => {
     if (!firstMovieData) return null;
@@ -52,9 +61,11 @@ export const MovieListContainer = (): JSX.Element => {
           const key = `movie-data-#${i}`;
           return <MovieBlock key={key} movieData={v} />;
         })}
-        <li ref={target} className={styles.loadingRef}>
-          loading..
-        </li>
+        {isNextPage && (
+          <li ref={intersectTarget} className={styles.loadingRef}>
+            <LoadingIcon />
+          </li>
+        )}
       </ul>
     );
   };
