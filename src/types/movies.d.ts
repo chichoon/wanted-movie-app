@@ -7,8 +7,7 @@ export declare interface IMovie {
 }
 
 export declare interface ISearchResult {
-  Response: 'True' | 'False';
-  Search?: Array<IMovie>;
+  Response: 'True' | 'False' | null;
   totalResults?: number;
   Error?: string;
 }
