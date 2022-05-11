@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@import '/src/styles/mixins/flexbox';
 
 .movieContainer {
   width: 40rem;
@@ -6,4 +7,23 @@
   overflow: scroll;
   background-color: colors.$WHITE;
   border-radius: 1rem;
+}
+
+.errorMessage {
+  @include flexbox(center, center);
+  flex-direction: column;
+  width: inherit;
+  height: inherit;
+
+  svg {
+    width: 8rem;
+    height: 8rem;
+    margin-bottom: 2rem;
+    fill: colors.$TITLE;
+  }
+
+  h3 {
+    font-size: 2rem;
+    color: colors.$TITLE;
+  }
 }
