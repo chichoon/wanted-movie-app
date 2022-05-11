@@ -3,9 +3,9 @@ import styles from './MainPage.module.scss';
 
 export const MainPage = (): JSX.Element => {
   return (
-    <div className={styles.mainPage}>
+    <main className={styles.mainPage}>
       <SearchInput />
       <MovieListContainer />
-    </div>
+    </main>
   );
 };
