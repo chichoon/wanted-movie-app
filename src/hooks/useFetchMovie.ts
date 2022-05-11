@@ -1,28 +1,28 @@
 import { useState, useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
-import { ISearchResult } from '../types/movies.d';
+import { ISearchResult, IMovie } from '../types/movies.d';
 import { getMovieData } from '../services/getMovieData';
-import { searchLoadingState, searchValueState } from '../utils/atoms';
+import { searchValueState } from '../utils/atoms';
 
-export const useFetchMovie = (page: number): ISearchResult | undefined => {
+interface IFetchedData extends ISearchResult {
+  Search?: Array<IMovie>;
+}
+
+export const useFetchMovie = (): IFetchedData | null => {
   const searchValue = useRecoilValue(searchValueState);
-  const setLoading = useSetRecoilState(searchLoadingState);
-  const [searchResult, setSearchResult] = useState(undefined);
+  const [searchResult, setSearchResult] = useState(null);
 
   useEffect(() => {
     const fetchSearchResult = async () => {
-      setLoading(true);
       try {
-        const response = await getMovieData(searchValue, page);
-        setSearchResult(response.data);
+        const responseData = await getMovieData(searchValue, 1);
+        setSearchResult(responseData);
       } catch (error) {
-        setSearchResult(undefined);
-      } finally {
-        setLoading(false);
+        setSearchResult(null);
       }
     };
     searchValue !== '' && fetchSearchResult();
-  }, [page, searchValue, setLoading]);
+  }, [searchValue]);
   return searchResult;
 };
