@@ -7,9 +7,10 @@ export declare interface IMovie {
 }
 
 export declare interface ISearchResult {
-  Search: Array<IMovie>;
-  totalResults: number;
-  Response: boolean;
+  Response: 'True' | 'False';
+  Search?: Array<IMovie>;
+  totalResults?: number;
+  Error?: string;
 }
 
 export declare interface IFavoriteData {
