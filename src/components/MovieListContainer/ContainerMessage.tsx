@@ -2,15 +2,15 @@ import { LoadingIcon, SadIcon } from '../../assets/svgs';
 import styles from './movieListContainer.module.scss';
 
 interface IErrorMessageProps {
-  loading: boolean;
+  isLoading: boolean;
   message: string | undefined;
 }
 
-export const ContainerMessage = ({ loading, message }: IErrorMessageProps): JSX.Element => {
+export const ContainerMessage = ({ isLoading, message }: IErrorMessageProps): JSX.Element => {
   return (
     <div className={styles.containerMessage}>
-      {loading ? <LoadingIcon className={styles.loadingIcon} /> : <SadIcon />}
-      <h3>{loading ? 'Loading...' : message}</h3>
+      {isLoading ? <LoadingIcon className={styles.loadingIcon} /> : <SadIcon />}
+      <h3>{isLoading ? 'Loading...' : message}</h3>
     </div>
   );
 };
