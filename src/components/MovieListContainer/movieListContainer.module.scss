@@ -5,9 +5,20 @@
 .movieContainer {
   width: 40rem;
   height: 30rem;
-  overflow: scroll;
+  overflow: hidden;
   background-color: colors.$WHITE;
   border-radius: 1rem;
+
+  .movieList {
+    width: 40rem;
+    height: 30rem;
+    overflow: scroll;
+  }
+
+  .loadingRef {
+    height: 3rem;
+    background-color: aqua;
+  }
 }
 
 .containerMessage {

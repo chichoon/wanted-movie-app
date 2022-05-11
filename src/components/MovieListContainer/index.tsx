@@ -1,32 +1,69 @@
-import { useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-
-import { searchLoadingState } from '../../utils/atoms';
 import { useFetchMovie } from '../../hooks/useFetchMovie';
-import { MovieBlock } from '../MovieBlock';
+import { useIntersect } from '../../hooks/useIntersect';
 
-import styles from './movieListContainer.module.scss';
+import { getMovieData } from '../../services/getMovieData';
+import { IMovie, ISearchResult } from '../../types/movies.d';
+import { searchValueState } from '../../utils/atoms';
+import { MovieBlock } from '../MovieBlock';
 import { ContainerMessage } from './ContainerMessage';
+import styles from './movieListContainer.module.scss';
 
 export const MovieListContainer = (): JSX.Element => {
-  const [searchPage, setSearchPage] = useState(1);
-  const loading = useRecoilValue(searchLoadingState);
-  const searchResult = useFetchMovie(searchPage);
+  const firstMovieData = useFetchMovie();
+  const [searchResult, setSearchResult] = useState<ISearchResult>({
+    Response: null,
+    totalResults: 0,
+    Error: '',
+  });
+  const [pages, setPages] = useState(1);
+  const [movieArray, setMovieArray] = useState<IMovie[]>([]);
+  const searchValue = useRecoilValue(searchValueState);
+
+  const getMoreMovie = async () => {
+    if (searchResult.totalResults && searchResult.totalResults < pages * 10) return;
+    const responseData = await getMovieData(searchValue, pages + 1);
+    setSearchResult((prevState) => ({
+      Response: responseData?.Response,
+      totalResults: prevState?.totalResults,
+      Error: responseData?.Error,
+    }));
+    setMovieArray((prevState) => prevState.concat(responseData?.Search));
+    setPages((prevState) => prevState + 1);
+  };
+  const target = useIntersect(getMoreMovie, 0.7);
+
+  useEffect(() => {
+    setSearchResult({
+      Response: firstMovieData?.Response ?? null,
+      totalResults: firstMovieData?.totalResults,
+      Error: firstMovieData?.Error ?? '',
+    });
+    setMovieArray(firstMovieData?.Search ?? []);
+  }, [firstMovieData, searchValue]);
 
   const renderMovieContainer = (): JSX.Element | null => {
-    if (loading || searchResult?.Response === 'False')
-      return <ContainerMessage loading={loading} message={searchResult?.Error} />;
+    if (!firstMovieData) return null;
+    if (searchResult.Response === 'False') return <ContainerMessage isLoading={false} message={searchResult.Error} />;
     return (
       <ul className={styles.movieList}>
-        {searchResult?.Search?.map((v, i) => {
+        {movieArray.map((v, i) => {
           const key = `movie-data-#${i}`;
           return <MovieBlock key={key} movieData={v} />;
         })}
+        <li ref={target} className={styles.loadingRef}>
+          loading..
+        </li>
       </ul>
     );
   };
 
-  return <div className={styles.movieContainer}>{renderMovieContainer()}</div>;
+  return (
+    <div className={styles.movieContainer}>
+      <Suspense fallback={<ContainerMessage isLoading message='' />}>{renderMovieContainer()}</Suspense>
+    </div>
+  );
 };
 // TODO: Too many results (검색어: a) 예외처리
 // TODO: Movies not found (검색어: harry porter) 예외처리
