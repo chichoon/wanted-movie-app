@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { ISearchResult } from '../utils/Interfaces';
+import { ISearchResult } from '../types/movies.d';
 import { getMovieData } from '../services/getMovieData';
 import { searchLoadingState, searchValueState } from '../utils/atoms';
 

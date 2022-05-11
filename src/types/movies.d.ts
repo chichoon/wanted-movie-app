@@ -1,4 +1,4 @@
-export interface IMovie {
+export declare interface IMovie {
   Title: string;
   Year: string;
   imdbID: string;
@@ -6,13 +6,13 @@ export interface IMovie {
   Poster: string;
 }
 
-export interface ISearchResult {
+export declare interface ISearchResult {
   Search: Array<IMovie>;
   totalResults: number;
   Response: boolean;
 }
 
-export interface IFavoriteData {
+export declare interface IFavoriteData {
   Movies: Array<IMovie>;
   imdbIDs: Array<string>;
 }

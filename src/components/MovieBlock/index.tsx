@@ -1,4 +1,4 @@
-import { IMovie } from '../../utils/Interfaces';
+import { IMovie } from '../../types/movies.d';
 import styles from './movieBlock.module.scss';
 
 interface IMovieBlock {
