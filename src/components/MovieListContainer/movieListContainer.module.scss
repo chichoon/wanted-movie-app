@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@import '/src/styles/mixins/animation';
 @import '/src/styles/mixins/flexbox';
 
 .movieContainer {
@@ -20,6 +21,10 @@
     height: 8rem;
     margin-bottom: 2rem;
     fill: colors.$TITLE;
+
+    &.loadingIcon {
+      @include rotateAnimation(0.5s);
+    }
   }
 
   h3 {
