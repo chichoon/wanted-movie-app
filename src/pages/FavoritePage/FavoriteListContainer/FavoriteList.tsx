@@ -8,35 +8,15 @@ import { favoriteDataState } from 'utils/atoms';
 
 const store = require('store');
 
-const TEST_DATA: IFavoriteData = {
-  Movies: [
-    {
-      Title: 'The Maze Runner',
-      Year: '2014',
-      imdbID: 'tt1790864',
-      Type: 'movie',
-      Poster: 'https://m.media-amazon.com/images/M/MV5BMjUyNTA3MTAyM15BMl5BanBnXkFtZTgwOTEyMTkyMjE@._V1_SX300.jpg',
-    },
-    {
-      Title: 'Into the Grizzly Maze',
-      Year: '2015',
-      imdbID: 'tt1694021',
-      Type: 'movie',
-      Poster: 'https://m.media-amazon.com/images/M/MV5BMjExOTkxMTIzN15BMl5BanBnXkFtZTgwNjcxNzY2NTE@._V1_SX300.jpg',
-    },
-  ],
-  imdbIDs: ['tt1790864', 'tt1694021'],
-};
-
 export const FavoriteList = () => {
   const [favoriteData, setFavoriteData] = useRecoilState(favoriteDataState);
 
   useMount(() => {
-    let storageData = store.get('storageData');
+    const storageData = store.get('storageData');
     if (!storageData) store.set('storageData', favoriteData);
     else setFavoriteData(storageData);
-    console.log(storageData);
   });
+  // TODO: 페이지 새로고침 시에 로컬스토리지 데이터 다 날아가는거 다시 보기
 
   useEffect(() => {
     store.set('storageData', favoriteData);
@@ -44,7 +24,7 @@ export const FavoriteList = () => {
 
   return (
     <ul>
-      {TEST_DATA.Movies.map((v: IMovie) => (
+      {favoriteData.Movies.map((v: IMovie) => (
         <li key={`fav-list-${v.imdbID}`}>
           <MovieBlock movieData={v} />
         </li>
