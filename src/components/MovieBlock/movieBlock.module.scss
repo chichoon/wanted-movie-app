@@ -12,13 +12,12 @@
 
 .movieBlockLeft {
   @include flexbox(center, center);
-  width: 40%;
-  margin-right: 3rem;
+  width: 10rem;
+  margin-right: 2rem;
 
   img {
     max-width: 8rem;
     height: 10rem;
-    max-height: 10rem;
     object-fit: cover;
     border: 1px solid colors.$BLACK;
   }
@@ -36,20 +35,21 @@
   }
 }
 
-.movieBlockRight {
+.movieBlockMiddle {
   @include flexbox(center, start);
   flex-direction: column;
-  width: 23rem;
+  width: 18rem;
   height: inherit;
+  margin: 0 1rem;
 
   h2 {
-    width: 20rem;
+    width: 18rem;
     margin-bottom: 0.5rem;
     overflow: hidden;
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 2rem;
-    color: colors.$SEARCH_H2;
+    color: colors.$MOVIE_TITLE;
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -59,6 +59,17 @@
     display: block;
     font-style: italic;
     font-weight: 600;
-    color: colors.$SEARCH_LIGHT;
+    color: colors.$MOVIE_SPAN;
+  }
+}
+
+.movieBlockRight {
+  width: 2rem;
+  margin: 0 1rem;
+
+  .favoriteIcon {
+    width: 2rem;
+    fill: colors.$MOVIE_STAR_FILL;
+    filter: drop-shadow(0 0 0.1rem colors.$MOVIE_STAR_BORDER);
   }
 }

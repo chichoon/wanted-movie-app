@@ -1,4 +1,4 @@
-import { ImageNotFoundIcon } from 'assets/svgs';
+import { ImageNotFoundIcon, StarIcon } from 'assets/svgs';
 import { IMovie } from 'types/movies.d';
 import styles from './movieBlock.module.scss';
 
@@ -20,12 +20,15 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
           <img src={Poster} alt={Title} />
         )}
       </section>
-      <section className={styles.movieBlockRight}>
+      <section className={styles.movieBlockMiddle}>
         <span>{imdbID}</span>
         <h2>{Title}</h2>
         <span>
           {Type} ・ {Year}
         </span>
+      </section>
+      <section className={styles.movieBlockRight}>
+        <StarIcon className={styles.favoriteIcon} />
       </section>
     </div>
   );
