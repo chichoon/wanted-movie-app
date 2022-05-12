@@ -41,7 +41,7 @@ export const MovieListContainer = (): JSX.Element => {
 
   useEffect(() => {
     setSearchResult({
-      Response: firstMovieData?.Response,
+      Response: firstMovieData?.Response ?? null,
       totalResults: firstMovieData?.totalResults,
       Error: firstMovieData?.Error,
     });
@@ -50,13 +50,15 @@ export const MovieListContainer = (): JSX.Element => {
 
   useEffect(() => {
     setMovieArray([]);
+    setPages(1);
   }, [searchValue]);
 
-  const renderMovieContainer = (): JSX.Element | null => {
-    if (!firstMovieData) return null;
+  const renderMovieContainer = (): JSX.Element => {
+    if (searchValue === '' || !firstMovieData)
+      return <ContainerMessage isLoading={false} message='검색 결과가 없습니다.' />;
     if (searchResult.Response === 'False') return <ContainerMessage isLoading={false} message={searchResult.Error} />;
     return (
-      <ul className={styles.movieList}>
+      <ul>
         {movieArray.map((v, i) => {
           const key = `movie-data-#${i}`;
           return <MovieBlock key={key} movieData={v} />;

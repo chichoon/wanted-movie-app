@@ -9,16 +9,9 @@ interface IFetchedData extends ISearchResult {
   Search?: Array<IMovie>;
 }
 
-const INITIAL_DATA: IFetchedData = {
-  Response: 'False',
-  totalResults: 0,
-  Error: 'Unknown Error.',
-  Search: [],
-};
-
-export const useFetchMovie = (): IFetchedData => {
+export const useFetchMovie = (): IFetchedData | null => {
   const searchValue = useRecoilValue(searchValueState);
-  const [searchResult, setSearchResult] = useState(INITIAL_DATA);
+  const [searchResult, setSearchResult] = useState(null);
 
   useEffect(() => {
     const fetchSearchResult = async () => {
