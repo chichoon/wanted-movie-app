@@ -1,6 +1,14 @@
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import cx from 'classnames';
+
 import { ImageNotFoundIcon, StarIcon } from 'assets/svgs';
 import { IMovie } from 'types/movies.d';
+import { favoriteDataState } from 'utils/atoms';
 import styles from './movieBlock.module.scss';
+import { useMount } from 'react-use';
+
+const store = require('store');
 
 interface IMovieBlock {
   movieData: IMovie;
@@ -8,6 +16,35 @@ interface IMovieBlock {
 
 export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   const { Title, Year, imdbID, Type, Poster } = movieData;
+  const [favoriteData, setFavoriteData] = useRecoilState(favoriteDataState);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleStarClick = () => {
+    if (!isFavorite) {
+      setFavoriteData((prevState) => ({
+        Movies: [...prevState.Movies, movieData],
+        imdbIDs: [...prevState.imdbIDs, imdbID],
+      }));
+      setIsFavorite(true);
+    } else {
+      setFavoriteData((prevState) => {
+        const idx = prevState.imdbIDs.indexOf(imdbID);
+        console.log(idx);
+        return {
+          Movies: [...prevState.Movies.slice(0, idx), ...prevState.Movies.slice(idx)] as Array<IMovie>,
+          imdbIDs: [...prevState.imdbIDs.slice(0, idx), ...prevState.imdbIDs.slice(idx)] as Array<string>,
+        };
+      });
+      setIsFavorite(false);
+    }
+    store.set('storageData', favoriteData);
+  };
+  // TODO: hook이나 별개 로직으로 분리하는 방법 찾기
+
+  useMount(() => {
+    console.log(favoriteData.imdbIDs.includes(imdbID));
+    if (favoriteData.imdbIDs.includes(imdbID)) setIsFavorite(true);
+  });
 
   return (
     <div className={styles.movieBlock}>
@@ -28,7 +65,11 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
         </span>
       </section>
       <section className={styles.movieBlockRight}>
-        <button type='button' className={styles.favoriteButton}>
+        <button
+          type='button'
+          className={cx(styles.favoriteButton, { [styles.favorited]: isFavorite })}
+          onClick={handleStarClick}
+        >
           <StarIcon className={styles.favoriteIcon} />
         </button>
       </section>
