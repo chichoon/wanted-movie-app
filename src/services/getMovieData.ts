@@ -12,10 +12,8 @@ export const getMovieData = async (searchValue: string, page: number) => {
       },
       url: process.env.REACT_APP_MOVIE_API_URL,
     });
-  } catch {
-    response = {
-      Response: null,
-    };
+  } catch (error) {
+    return null;
   }
   return response?.data;
 };

@@ -14,7 +14,7 @@ import styles from './movieListContainer.module.scss';
 export const MovieListContainer = (): JSX.Element => {
   const firstMovieData = useFetchMovie();
   const [searchResult, setSearchResult] = useState<ISearchResult>({
-    Response: null,
+    Response: 'False',
     totalResults: 0,
     Error: '',
   });
@@ -41,7 +41,7 @@ export const MovieListContainer = (): JSX.Element => {
 
   useEffect(() => {
     setSearchResult({
-      Response: firstMovieData?.Response ?? null,
+      Response: firstMovieData?.Response,
       totalResults: firstMovieData?.totalResults,
       Error: firstMovieData?.Error,
     });
