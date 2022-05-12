@@ -10,7 +10,7 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   const { Title, Year, imdbID, Type, Poster } = movieData;
 
   return (
-    <li className={styles.movieBlock}>
+    <div className={styles.movieBlock}>
       <section className={styles.movieBlockLeft}>
         {Poster === 'N/A' ? (
           <div className={styles.imageNotFoundBlock}>
@@ -27,6 +27,6 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
           {Type} ・ {Year}
         </span>
       </section>
-    </li>
+    </div>
   );
 };

@@ -60,7 +60,11 @@ export const MovieListContainer = (): JSX.Element => {
       <ul>
         {movieArray.map((v, i) => {
           const key = `movie-data-#${i}`;
-          return <MovieBlock key={key} movieData={v} />;
+          return (
+            <li key={key}>
+              <MovieBlock movieData={v} />
+            </li>
+          );
         })}
         {isNextPage && (
           <li ref={intersectTarget} className={styles.loadingRef}>
