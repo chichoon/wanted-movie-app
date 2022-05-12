@@ -10,7 +10,7 @@ import { MovieBlock } from 'components';
 import { ContainerMessage } from './ContainerMessage';
 import { LoadingIcon } from 'assets/svgs';
 import styles from './movieListContainer.module.scss';
-import { useMount, useUnmount } from 'react-use';
+import { useUnmount } from 'react-use';
 
 export const MovieListContainer = (): JSX.Element => {
   const firstMovieData = useFetchMovie();
@@ -86,5 +86,4 @@ export const MovieListContainer = (): JSX.Element => {
     </div>
   );
 };
-// TODO: Too many results (검색어: a) 예외처리
-// TODO: Movies not found (검색어: harry porter) 예외처리
+// TODO: Suspense & Lazy loading 적용해보기
