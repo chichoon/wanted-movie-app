@@ -22,11 +22,10 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
       </section>
       <section className={styles.movieBlockRight}>
         <span>{imdbID}</span>
-        <dl>
-          <dt>{Title}</dt>
-          <dd>{Year}</dd>
-        </dl>
-        <span>{Type}</span>
+        <h2>{Title}</h2>
+        <span>
+          {Type} ・ {Year}
+        </span>
       </section>
     </li>
   );
