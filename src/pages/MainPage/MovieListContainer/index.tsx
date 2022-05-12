@@ -1,15 +1,16 @@
 import { Suspense, useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import { useFetchMovie } from 'hooks/useFetchMovie';
 import { useIntersect } from 'hooks/useIntersect';
+import { searchValueState } from 'utils/atoms';
 import { getMovieData } from 'services/getMovieData';
 import { IMovie, ISearchResult } from 'types/movies.d';
-import { searchValueState } from 'utils/atoms';
 import { MovieBlock } from 'components';
 import { ContainerMessage } from './ContainerMessage';
 import { LoadingIcon } from 'assets/svgs';
 import styles from './movieListContainer.module.scss';
+import { useMount, useUnmount } from 'react-use';
 
 export const MovieListContainer = (): JSX.Element => {
   const firstMovieData = useFetchMovie();
@@ -21,7 +22,7 @@ export const MovieListContainer = (): JSX.Element => {
   const [pages, setPages] = useState(1);
   const [movieArray, setMovieArray] = useState<IMovie[]>([]);
   const [isNextPage, setIsNextPage] = useState(true);
-  const searchValue = useRecoilValue(searchValueState);
+  const [searchValue, setSearchValue] = useRecoilState(searchValueState);
 
   const getMoreMovie = async () => {
     if (searchResult.totalResults && searchResult.totalResults < pages * 10) {
@@ -52,6 +53,10 @@ export const MovieListContainer = (): JSX.Element => {
     setMovieArray([]);
     setPages(1);
   }, [searchValue]);
+
+  useUnmount(() => {
+    setSearchValue('');
+  });
 
   const renderMovieContainer = (): JSX.Element => {
     if (!searchResult.Response) return <ContainerMessage isLoading={false} message='검색 결과가 없습니다.' />;
