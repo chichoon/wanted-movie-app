@@ -54,8 +54,7 @@ export const MovieListContainer = (): JSX.Element => {
   }, [searchValue]);
 
   const renderMovieContainer = (): JSX.Element => {
-    if (searchValue === '' || !firstMovieData)
-      return <ContainerMessage isLoading={false} message='검색 결과가 없습니다.' />;
+    if (!searchResult.Response) return <ContainerMessage isLoading={false} message='검색 결과가 없습니다.' />;
     if (searchResult.Response === 'False') return <ContainerMessage isLoading={false} message={searchResult.Error} />;
     return (
       <ul>
@@ -74,7 +73,7 @@ export const MovieListContainer = (): JSX.Element => {
 
   return (
     <div className={styles.movieContainer}>
-      <Suspense fallback={<ContainerMessage isLoading message='' />}>{renderMovieContainer()}</Suspense>
+      <Suspense fallback={<ContainerMessage isLoading />}>{renderMovieContainer()}</Suspense>
     </div>
   );
 };
