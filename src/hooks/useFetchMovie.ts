@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { ISearchResult, IMovie } from '../types/movies.d';
-import { getMovieData } from '../services/getMovieData';
-import { searchValueState } from '../utils/atoms';
+import { ISearchResult, IMovie } from 'types/movies.d';
+import { getMovieData } from 'services/getMovieData';
+import { searchValueState } from 'utils/atoms';
 
 interface IFetchedData extends ISearchResult {
   Search?: Array<IMovie>;

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
-import { searchValueState } from '../../../utils/atoms/searchValueState';
+import { searchValueState } from 'utils/atoms/searchValueState';
 
-import { SearchIcon } from '../../../assets/svgs';
+import { SearchIcon } from 'assets/svgs';
 import styles from './searchInput.module.scss';
 
 export const SearchInput = (): JSX.Element => {

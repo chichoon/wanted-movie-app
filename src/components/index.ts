@@ -1,5 +1,4 @@
 import { NavigationBar } from './NavigationBar';
-import { SearchInput } from '../pages/MainPage/SearchInput';
-import { MovieListContainer } from '../pages/MainPage/MovieListContainer';
+import { MovieBlock } from './MovieBlock';
 
-export { NavigationBar, SearchInput, MovieListContainer };
+export { NavigationBar, MovieBlock };

@@ -1,5 +1,5 @@
-import { ImageNotFoundIcon } from '../../assets/svgs';
-import { IMovie } from '../../types/movies.d';
+import { ImageNotFoundIcon } from 'assets/svgs';
+import { IMovie } from 'types/movies.d';
 import styles from './movieBlock.module.scss';
 
 interface IMovieBlock {
