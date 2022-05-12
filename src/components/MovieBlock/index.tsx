@@ -28,7 +28,9 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
         </span>
       </section>
       <section className={styles.movieBlockRight}>
-        <StarIcon className={styles.favoriteIcon} />
+        <button type='button' className={styles.favoriteButton}>
+          <StarIcon className={styles.favoriteIcon} />
+        </button>
       </section>
     </div>
   );
