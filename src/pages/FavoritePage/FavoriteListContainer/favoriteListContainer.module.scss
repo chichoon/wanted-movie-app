@@ -1,0 +1,10 @@
+@use '/src/styles/constants/colors';
+@import '/src/styles/mixins/flexbox';
+
+.favoriteContainer {
+  width: 40rem;
+  height: 30rem;
+  overflow: scroll;
+  background-color: colors.$WHITE;
+  border-radius: 1rem;
+}

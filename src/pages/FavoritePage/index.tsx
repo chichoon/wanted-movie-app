@@ -1,5 +1,11 @@
-import styles from './FavoritePage.module.scss';
+import { FavoriteListContainer } from './FavoriteListContainer';
+import styles from './favoritePage.module.scss';
 
 export const FavoritePage = (): JSX.Element => {
-  return <main className={styles.favPage}>asdasd</main>;
+  return (
+    <main className={styles.favoritePage}>
+      <h1>좋아요한 영화 목록</h1>
+      <FavoriteListContainer />
+    </main>
+  );
 };

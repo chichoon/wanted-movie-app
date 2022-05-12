@@ -1,4 +1,23 @@
-.favPage {
+@use '/src/styles/constants/colors';
+@import '/src/styles/mixins/flexbox';
+
+.favoritePage {
+  @include flexbox(center, center);
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
+
+  h1 {
+    @include flexbox(center, center);
+    width: 40rem;
+    height: 4rem;
+    margin: 1rem 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: colors.$TITLE;
+    text-shadow: -1px 0 colors.$WHITE, 0 1px colors.$WHITE, 1px 0 colors.$WHITE, 0 -1px colors.$WHITE;
+    background-color: colors.$WHITE30P;
+    border: 3px solid colors.$WHITE;
+    border-radius: 2rem;
+  }
 }
