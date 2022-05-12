@@ -67,9 +67,26 @@
   width: 2rem;
   margin: 0 1rem;
 
-  .favoriteIcon {
+  .favoriteButton {
     width: 2rem;
-    fill: colors.$MOVIE_STAR_FILL;
-    filter: drop-shadow(0 0 0.1rem colors.$MOVIE_STAR_BORDER);
+    height: 2rem;
+
+    .favoriteIcon {
+      filter: drop-shadow(0 0 0.1rem colors.$MOVIE_STAR_BORDER);
+      fill: colors.$WHITE;
+      transition: fill 0.2s;
+    }
+
+    &:hover {
+      .favoriteIcon {
+        fill: colors.$MOVIE_STAR_HOVER;
+      }
+    }
+
+    &.favorited {
+      .favoriteIcon {
+        fill: colors.$MOVIE_STAR_FILL;
+      }
+    }
   }
 }
