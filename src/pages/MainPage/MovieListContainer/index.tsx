@@ -1,14 +1,14 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { LoadingIcon } from '../../assets/svgs';
-import { useFetchMovie } from '../../hooks/useFetchMovie';
-import { useIntersect } from '../../hooks/useIntersect';
 
-import { getMovieData } from '../../services/getMovieData';
-import { IMovie, ISearchResult } from '../../types/movies.d';
-import { searchValueState } from '../../utils/atoms';
-import { MovieBlock } from '../MovieBlock';
+import { useFetchMovie } from '../../../hooks/useFetchMovie';
+import { useIntersect } from '../../../hooks/useIntersect';
+import { getMovieData } from '../../../services/getMovieData';
+import { IMovie, ISearchResult } from '../../../types/movies.d';
+import { searchValueState } from '../../../utils/atoms';
+import { MovieBlock } from '../../../components/MovieBlock';
 import { ContainerMessage } from './ContainerMessage';
+import { LoadingIcon } from '../../../assets/svgs';
 import styles from './movieListContainer.module.scss';
 
 export const MovieListContainer = (): JSX.Element => {

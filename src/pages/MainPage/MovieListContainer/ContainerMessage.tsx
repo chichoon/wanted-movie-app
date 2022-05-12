@@ -1,4 +1,4 @@
-import { LoadingIcon, SadIcon } from '../../assets/svgs';
+import { LoadingIcon, SadIcon } from '../../../assets/svgs';
 import styles from './movieListContainer.module.scss';
 
 interface IErrorMessageProps {
