@@ -37,7 +37,7 @@ export const MovieListContainer = (): JSX.Element => {
     setMovieArray((prevState) => prevState.concat(responseData?.Search));
     setPages((prevState) => prevState + 1);
   };
-  const intersectTarget = useIntersect(getMoreMovie, 0.8);
+  const intersectTarget = useIntersect(getMoreMovie, 0.6);
 
   useEffect(() => {
     setSearchResult({
