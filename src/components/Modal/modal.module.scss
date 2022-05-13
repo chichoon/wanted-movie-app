@@ -1,0 +1,16 @@
+@use '/src/styles/constants/colors';
+@import '/src/styles/mixins/flexbox';
+
+.modalContainer {
+  @include flexbox(center, center);
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  width: 10rem;
+  height: 5rem;
+  background-color: colors.$WHITE;
+}
+
+.isHidden {
+  display: none;
+}
