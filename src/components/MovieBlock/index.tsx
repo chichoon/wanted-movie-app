@@ -29,7 +29,6 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
     } else {
       setFavoriteData((prevState) => {
         const idx = prevState.imdbIDs.indexOf(imdbID);
-        console.log(idx);
         return {
           Movies: [...prevState.Movies.slice(0, idx), ...prevState.Movies.slice(idx)] as IMovie[],
           imdbIDs: [...prevState.imdbIDs.slice(0, idx), ...prevState.imdbIDs.slice(idx)] as string[],
@@ -42,7 +41,6 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   // TODO: hook이나 별개 로직으로 분리하는 방법 찾기
 
   useMount(() => {
-    console.log(favoriteData.imdbIDs.includes(imdbID));
     if (favoriteData.imdbIDs.includes(imdbID)) setIsFavorite(true);
   });
 

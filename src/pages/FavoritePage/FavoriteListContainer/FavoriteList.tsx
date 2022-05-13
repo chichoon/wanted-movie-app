@@ -1,5 +1,4 @@
 import { MovieBlock } from 'components';
-import { useEffect } from 'react';
 import { useMount } from 'react-use';
 import { useRecoilState } from 'recoil';
 
