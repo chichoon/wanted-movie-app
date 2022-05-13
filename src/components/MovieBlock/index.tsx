@@ -7,6 +7,8 @@ import { IMovie } from 'types/movies.d';
 import { favoriteDataState } from 'utils/atoms';
 import styles from './movieBlock.module.scss';
 import { useMount } from 'react-use';
+import ModalPortal from 'components/Modal/ModalPortal';
+import { Modal } from 'components/Modal';
 
 const store = require('store');
 
@@ -18,8 +20,10 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   const { Title, Year, imdbID, Type, Poster } = movieData;
   const [favoriteData, setFavoriteData] = useRecoilState(favoriteDataState);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleStarClick = () => {
+    /*
     if (!isFavorite) {
       setFavoriteData((prevState) => ({
         Movies: [...prevState.Movies, movieData],
@@ -37,6 +41,8 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
       setIsFavorite(false);
     }
     store.set('storageData', favoriteData);
+    */
+    setIsModalOpen(true);
   };
   // TODO: hook이나 별개 로직으로 분리하는 방법 찾기
 
@@ -45,32 +51,35 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   });
 
   return (
-    <div className={styles.movieBlock}>
-      <section className={styles.movieBlockLeft}>
-        {Poster === 'N/A' ? (
-          <div className={styles.imageNotFoundBlock}>
-            <ImageNotFoundIcon className={styles.imageNotFoundIcon} />
-          </div>
-        ) : (
-          <img src={Poster} alt={Title} />
-        )}
-      </section>
-      <section className={styles.movieBlockMiddle}>
-        <span>{imdbID}</span>
-        <h2>{Title}</h2>
-        <span>
-          {Type} ・ {Year}
-        </span>
-      </section>
-      <section className={styles.movieBlockRight}>
-        <button
-          type='button'
-          className={cx(styles.favoriteButton, { [styles.favorited]: isFavorite })}
-          onClick={handleStarClick}
-        >
-          <StarIcon className={styles.favoriteIcon} />
-        </button>
-      </section>
-    </div>
+    <>
+      <div className={styles.movieBlock}>
+        <section className={styles.movieBlockLeft}>
+          {Poster === 'N/A' ? (
+            <div className={styles.imageNotFoundBlock}>
+              <ImageNotFoundIcon className={styles.imageNotFoundIcon} />
+            </div>
+          ) : (
+            <img src={Poster} alt={Title} />
+          )}
+        </section>
+        <section className={styles.movieBlockMiddle}>
+          <span>{imdbID}</span>
+          <h2>{Title}</h2>
+          <span>
+            {Type} ・ {Year}
+          </span>
+        </section>
+        <section className={styles.movieBlockRight}>
+          <button
+            type='button'
+            className={cx(styles.favoriteButton, { [styles.favorited]: isFavorite })}
+            onClick={handleStarClick}
+          >
+            <StarIcon className={styles.favoriteIcon} />
+          </button>
+        </section>
+      </div>
+      <ModalPortal>{isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}</ModalPortal>
+    </>
   );
 };
