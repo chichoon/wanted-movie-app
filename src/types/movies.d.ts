@@ -13,6 +13,6 @@ export declare interface ISearchResult {
 }
 
 export declare interface IFavoriteData {
-  Movies: Array<IMovie>;
-  imdbIDs: Array<string>;
+  Movies: IMovie[];
+  imdbIDs: string[];
 }

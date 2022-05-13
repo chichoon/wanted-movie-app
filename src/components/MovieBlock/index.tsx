@@ -31,8 +31,8 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
         const idx = prevState.imdbIDs.indexOf(imdbID);
         console.log(idx);
         return {
-          Movies: [...prevState.Movies.slice(0, idx), ...prevState.Movies.slice(idx)] as Array<IMovie>,
-          imdbIDs: [...prevState.imdbIDs.slice(0, idx), ...prevState.imdbIDs.slice(idx)] as Array<string>,
+          Movies: [...prevState.Movies.slice(0, idx), ...prevState.Movies.slice(idx)] as IMovie[],
+          imdbIDs: [...prevState.imdbIDs.slice(0, idx), ...prevState.imdbIDs.slice(idx)] as string[],
         };
       });
       setIsFavorite(false);

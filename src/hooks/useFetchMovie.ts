@@ -6,7 +6,7 @@ import { getMovieData } from 'services/getMovieData';
 import { searchValueState } from 'utils/atoms';
 
 interface IFetchedData extends ISearchResult {
-  Search?: Array<IMovie>;
+  Search?: IMovie[];
 }
 
 export const useFetchMovie = (): IFetchedData | null => {
