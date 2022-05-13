@@ -1,13 +1,17 @@
 import cx from 'classnames';
 
 import ModalPortal from 'components/Modal/ModalPortal';
+import { IMovie } from 'types/movies';
 import styles from './modal.module.scss';
 
 interface IModalType {
+  isFavorite: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  movieData: IMovie;
 }
 
-export const Modal = ({ setIsModalOpen }: IModalType) => {
+export const Modal = ({ isFavorite, setIsModalOpen, movieData }: IModalType) => {
+  const { Title, Year, imdbID, Type } = movieData;
   const handleModalButton = () => {
     setIsModalOpen(false);
   };
@@ -16,13 +20,20 @@ export const Modal = ({ setIsModalOpen }: IModalType) => {
     <ModalPortal>
       <div className={styles.modalBackground}>
         <div className={styles.modalContainer}>
-          <header>컨텐츠1</header>
+          <header>{isFavorite ? '즐겨찾기에서 제거하시겠습니까?' : '즐겨찾기에 추가하시겠습니까?'}</header>
           <main>
-            컨텐츠2
-            <button type='button' onClick={handleModalButton}>
-              닫기
-            </button>
+            <span>{imdbID}</span>
+            <h2>{Title}</h2>
+            <span>
+              {Type} ・ {Year}
+            </span>
           </main>
+          <footer>
+            <button type='button'>{isFavorite ? '즐겨찾기 제거' : '즐겨찾기'}</button>
+            <button type='button' onClick={handleModalButton}>
+              취소
+            </button>
+          </footer>
         </div>
       </div>
     </ModalPortal>

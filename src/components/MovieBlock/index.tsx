@@ -79,7 +79,9 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
           </button>
         </section>
       </div>
-      <ModalPortal>{isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}</ModalPortal>
+      <ModalPortal>
+        {isModalOpen && <Modal isFavorite={isFavorite} setIsModalOpen={setIsModalOpen} movieData={movieData} />}
+      </ModalPortal>
     </>
   );
 };

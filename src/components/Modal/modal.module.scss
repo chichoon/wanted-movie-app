@@ -11,15 +11,22 @@
 }
 
 .modalContainer {
-  @include flexbox(center, center);
+  @include flexbox(start, center);
   position: fixed;
   top: calc(50% - 7.5rem);
   left: calc(50% - 15rem);
   flex-direction: column;
   width: 30rem;
   height: 15rem;
-  border: 1px solid black;
   background-color: colors.$WHITE;
+  border: 1px solid black;
+
+  header {
+    @include flexbox(center, center);
+    width: 100%;
+    height: 3rem;
+    background-color: colors.$BACKGROUND;
+  }
 }
 
 .isHidden {
