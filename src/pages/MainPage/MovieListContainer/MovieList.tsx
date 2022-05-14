@@ -45,16 +45,17 @@ export const MovieList = ({ resource }: IMovieListData): JSX.Element => {
   };
 
   useEffect(() => {
-    setMovieArray(searchResult?.data.Search);
+    const arrTemp = _.uniqBy(searchResult?.data.Search as IMovie[], 'imdbID');
+    setMovieArray(arrTemp);
   }, [searchValue, searchResult]);
 
   const intersectTarget = useIntersect(getMoreMovie, 0.6);
 
-  if (!response) return <ContainerMessage isLoading={false} message='검색 결과가 없습니다.' />;
+  if (!movieArray) return <ContainerMessage isLoading={false} message='검색 결과가 없습니다.' />;
   if (response === 'False') return <ContainerMessage isLoading={false} message={searchResult?.data.Error} />;
   return (
     <ul>
-      {movieArray.map((v, i) => {
+      {movieArray?.map((v, i) => {
         const key = `movie-data-#${i}`;
         return (
           <li key={key}>
