@@ -1,19 +1,11 @@
 import { MovieBlock } from 'components';
-import { useMount } from 'react-use';
 import { useRecoilState } from 'recoil';
 
 import { IMovie } from 'types/movies';
 import { favoriteDataState } from 'utils/atoms';
 
-const store = require('store');
-
 export const FavoriteList = () => {
   const [favoriteData, setFavoriteData] = useRecoilState(favoriteDataState);
-
-  useMount(() => {
-    const storageData = store.get('storageData');
-    setFavoriteData(storageData);
-  });
 
   return (
     <ul>

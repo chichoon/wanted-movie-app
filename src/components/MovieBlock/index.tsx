@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import cx from 'classnames';
 
 import { ImageNotFoundIcon, StarIcon } from 'assets/svgs';
 import { IMovie } from 'types/movies.d';
 import { favoriteDataState } from 'utils/atoms';
 import styles from './movieBlock.module.scss';
-import { useMount } from 'react-use';
 import ModalPortal from 'components/Modal/ModalPortal';
 import { Modal } from 'components/Modal';
 
@@ -18,7 +17,7 @@ interface IMovieBlock {
 
 export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   const { Title, Year, imdbID, Type, Poster } = movieData;
-  const [favoriteData, setFavoriteData] = useRecoilState(favoriteDataState);
+  const favoriteData = useRecoilValue(favoriteDataState);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -6,8 +6,6 @@ import ModalPortal from 'components/Modal/ModalPortal';
 import { IMovie } from 'types/movies';
 import styles from './modal.module.scss';
 
-const store = require('store');
-
 interface IModalType {
   isFavorite: boolean;
   setIsFavorite: React.Dispatch<React.SetStateAction<boolean>>;
