@@ -6,8 +6,10 @@ import { ImageNotFoundIcon, StarIcon } from 'assets/svgs';
 import { IMovie } from 'types/movies.d';
 import { favoriteDataState } from 'utils/atoms';
 import styles from './movieBlock.module.scss';
-import ModalPortal from 'components/Modal/ModalPortal';
-import { Modal } from 'components/Modal';
+import ModalPortal from 'components/MovieBlock/Modal/ModalPortal';
+import { Modal } from 'components/MovieBlock/Modal';
+import _ from 'lodash';
+import { useMount } from 'react-use';
 
 const store = require('store');
 
@@ -24,10 +26,10 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   const handleStarClick = () => {
     setIsModalOpen(true);
   };
-  // TODO: hook이나 별개 로직으로 분리하는 방법 찾기
 
   useEffect(() => {
-    if (favoriteData.imdbIDs.includes(imdbID)) setIsFavorite(true);
+    if (_.find(favoriteData.imdbIDs, (v) => v === imdbID)) setIsFavorite(true);
+    else setIsFavorite(false);
   }, [favoriteData, imdbID]);
 
   useEffect(() => {
