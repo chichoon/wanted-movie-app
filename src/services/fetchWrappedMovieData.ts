@@ -1,16 +1,16 @@
 import axios, { AxiosPromise, AxiosResponse } from 'axios';
 
 const wrapPromise = (promise: AxiosPromise) => {
-  let status = 'pending'; // 데이터 수신 대기중 (resolve되지 않음)
-  let result: AxiosResponse<any, any>; // 서버에서 fetching 한 데이터 결과
+  let status = 'pending';
+  let result: AxiosResponse<any, any>;
   const suspender = promise.then(
     (response) => {
       status = 'success';
-      result = response; // 결과가 잘 받아졌을 때
+      result = response;
     },
     (error) => {
       status = 'error';
-      result = error; // 결과가 에러일 때
+      result = error;
     }
   );
   const read = () => {

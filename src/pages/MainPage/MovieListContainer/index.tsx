@@ -30,4 +30,3 @@ export const MovieListContainer = (): JSX.Element => {
     </div>
   );
 };
-// TODO: Suspense & Lazy loading 적용해보기
