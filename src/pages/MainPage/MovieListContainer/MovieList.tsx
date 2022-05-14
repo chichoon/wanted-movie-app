@@ -28,10 +28,6 @@ export const MovieList = ({ resource }: IMovieListData): JSX.Element => {
   const [isNextPage, setIsNextPage] = useState(true);
   const [pages, setPages] = useState(1);
 
-  useEffect(() => {
-    setPages(1);
-  }, [searchValue]);
-
   const getMoreMovie = async () => {
     if (totalResults && totalResults < pages * 10) {
       setIsNextPage(false);
@@ -47,6 +43,7 @@ export const MovieList = ({ resource }: IMovieListData): JSX.Element => {
   useEffect(() => {
     const arrTemp = _.uniqBy(searchResult?.data.Search as IMovie[], 'imdbID');
     setMovieArray(arrTemp);
+    setPages(1);
   }, [searchValue, searchResult]);
 
   const intersectTarget = useIntersect(getMoreMovie, 0.6);
