@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getMovieData = async (searchValue: string, page: number) => {
+export const fetchMovieData = async (searchValue: string, page: number) => {
   let response;
   try {
     response = await axios({
@@ -12,7 +12,7 @@ export const getMovieData = async (searchValue: string, page: number) => {
       },
       url: process.env.REACT_APP_MOVIE_API_URL,
     });
-  } catch (error) {
+  } catch {
     return null;
   }
   return response?.data;
