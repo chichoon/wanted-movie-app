@@ -9,7 +9,6 @@ import styles from './movieBlock.module.scss';
 import ModalPortal from 'components/MovieBlock/Modal/ModalPortal';
 import { Modal } from 'components/MovieBlock/Modal';
 import _ from 'lodash';
-import { useMount } from 'react-use';
 
 const store = require('store');
 
