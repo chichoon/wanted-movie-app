@@ -1,14 +1,23 @@
 import styles from './favoriteListContainer.module.scss';
 
-import { Suspense } from 'react';
-import { FavoriteList } from './FavoriteList';
+import { MovieBlock } from 'components';
+import { useRecoilValue } from 'recoil';
+
+import { IMovie } from 'types/movies';
+import { favoriteDataState } from 'utils/atoms';
 
 export const FavoriteListContainer = () => {
+  const favoriteData = useRecoilValue(favoriteDataState);
+
   return (
     <div className={styles.favoriteContainer}>
-      <Suspense fallback={<p>Loading...</p>}>
-        <FavoriteList />
-      </Suspense>
+      <ul>
+        {favoriteData.Movies.map((v: IMovie) => (
+          <li key={`fav-list-${v.imdbID}`}>
+            <MovieBlock movieData={v} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
