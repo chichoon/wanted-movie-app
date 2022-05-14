@@ -3,9 +3,10 @@ import { useRecoilState } from 'recoil';
 import { useUnmount } from 'react-use';
 
 import { searchValueState } from 'utils/atoms';
+import { fetchWrappedMovieData } from 'services';
 import { ContainerMessage } from './ContainerMessage';
 import { MovieList } from './MovieList';
-import { fetchWrappedMovieData } from 'services';
+
 import styles from './movieListContainer.module.scss';
 
 export const MovieListContainer = (): JSX.Element => {

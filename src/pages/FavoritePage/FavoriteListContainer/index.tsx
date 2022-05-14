@@ -1,10 +1,10 @@
-import styles from './favoriteListContainer.module.scss';
-
-import { MovieBlock } from 'components';
 import { useRecoilValue } from 'recoil';
 
+import { MovieBlock } from 'components';
 import { IMovie } from 'types/movies';
 import { favoriteDataState } from 'utils/atoms';
+
+import styles from './favoriteListContainer.module.scss';
 
 export const FavoriteListContainer = () => {
   const favoriteData = useRecoilValue(favoriteDataState);

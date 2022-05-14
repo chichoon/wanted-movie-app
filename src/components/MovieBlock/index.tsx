@@ -6,9 +6,10 @@ import _ from 'lodash';
 import { ImageNotFoundIcon, StarIcon } from 'assets/svgs';
 import { IMovie } from 'types/movies.d';
 import { favoriteDataState } from 'utils/atoms';
-import styles from './movieBlock.module.scss';
 import ModalPortal from './ModalPortal';
 import { Modal } from './Modal';
+
+import styles from './movieBlock.module.scss';
 
 const store = require('store');
 

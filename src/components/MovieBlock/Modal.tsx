@@ -2,8 +2,9 @@ import { useSetRecoilState } from 'recoil';
 import _ from 'lodash';
 
 import { favoriteDataState } from 'utils/atoms';
-import ModalPortal from 'components/MovieBlock/ModalPortal';
 import { IMovie } from 'types/movies';
+import ModalPortal from 'components/MovieBlock/ModalPortal';
+
 import styles from './modal.module.scss';
 
 interface IModalType {

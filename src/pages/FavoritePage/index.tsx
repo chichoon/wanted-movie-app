@@ -1,4 +1,5 @@
 import { FavoriteListContainer } from './FavoriteListContainer';
+
 import styles from './favoritePage.module.scss';
 
 export const FavoritePage = (): JSX.Element => {

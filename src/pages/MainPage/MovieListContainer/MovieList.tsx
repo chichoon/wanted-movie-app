@@ -4,12 +4,12 @@ import { useRecoilValue } from 'recoil';
 import _ from 'lodash';
 
 import { useIntersect } from 'hooks';
-import { searchValueState } from 'utils/atoms';
 import { fetchMovieData } from 'services';
+import { MovieBlock } from 'components';
+import { searchValueState } from 'utils/atoms';
+import { LoadingIcon } from 'assets/svgs';
 import { IMovie } from 'types/movies';
 import { ContainerMessage } from './ContainerMessage';
-import { MovieBlock } from 'components';
-import { LoadingIcon } from 'assets/svgs';
 
 import styles from './movieListContainer.module.scss';
 
