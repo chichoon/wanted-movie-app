@@ -50,22 +50,22 @@ export const Modal = ({ isFavorite, setIsFavorite, setIsModalOpen, movieData }: 
     <ModalPortal>
       <div className={styles.modalBackground}>
         <div className={styles.modalContainer}>
-          <header>{isFavorite ? '즐겨찾기에서 제거하시겠습니까?' : '즐겨찾기에 추가하시겠습니까?'}</header>
-          <main>
+          <h2>{isFavorite ? '즐겨찾기에서 제거하시겠습니까?' : '즐겨찾기에 추가하시겠습니까?'}</h2>
+          <section className={styles.modalDescription}>
             <span>{imdbID}</span>
-            <h2>{Title}</h2>
+            <h3>{Title}</h3>
             <span>
               {Type} ・ {Year}
             </span>
-          </main>
-          <footer>
+          </section>
+          <section className={styles.modalButton}>
             <button type='button' onClick={handleFavoriteButtonClick}>
               {isFavorite ? '즐겨찾기 제거' : '즐겨찾기'}
             </button>
             <button type='button' onClick={handleCloseButtonClick}>
               취소
             </button>
-          </footer>
+          </section>
         </div>
       </div>
     </ModalPortal>

@@ -48,7 +48,7 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
         </section>
         <section className={styles.movieBlockMiddle}>
           <span>{imdbID}</span>
-          <h2>{Title}</h2>
+          <h3>{Title}</h3>
           <span>
             {Type} ・ {Year}
           </span>
