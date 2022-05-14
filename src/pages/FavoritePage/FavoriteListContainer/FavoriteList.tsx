@@ -1,11 +1,11 @@
 import { MovieBlock } from 'components';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 import { IMovie } from 'types/movies';
 import { favoriteDataState } from 'utils/atoms';
 
 export const FavoriteList = () => {
-  const [favoriteData, setFavoriteData] = useRecoilState(favoriteDataState);
+  const favoriteData = useRecoilValue(favoriteDataState);
 
   return (
     <ul>
