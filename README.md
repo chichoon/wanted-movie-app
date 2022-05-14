@@ -30,4 +30,4 @@
 
 ### [로딩창 구현 - 비동기 처리와 Promise](https://chichoon.tistory.com/520)
 
-### [데이터 배열 파싱 및 조작 - lodash](https://chichoon.tistory.com/523
+### [데이터 배열 파싱 및 조작 - lodash](https://chichoon.tistory.com/523)
