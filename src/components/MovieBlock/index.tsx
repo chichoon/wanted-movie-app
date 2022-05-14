@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import cx from 'classnames';
 
@@ -23,32 +23,17 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleStarClick = () => {
-    /*
-    if (!isFavorite) {
-      setFavoriteData((prevState) => ({
-        Movies: [...prevState.Movies, movieData],
-        imdbIDs: [...prevState.imdbIDs, imdbID],
-      }));
-      setIsFavorite(true);
-    } else {
-      setFavoriteData((prevState) => {
-        const idx = prevState.imdbIDs.indexOf(imdbID);
-        return {
-          Movies: [...prevState.Movies.slice(0, idx), ...prevState.Movies.slice(idx)] as IMovie[],
-          imdbIDs: [...prevState.imdbIDs.slice(0, idx), ...prevState.imdbIDs.slice(idx)] as string[],
-        };
-      });
-      setIsFavorite(false);
-    }
-    store.set('storageData', favoriteData);
-    */
     setIsModalOpen(true);
   };
   // TODO: hook이나 별개 로직으로 분리하는 방법 찾기
 
-  useMount(() => {
+  useEffect(() => {
     if (favoriteData.imdbIDs.includes(imdbID)) setIsFavorite(true);
-  });
+  }, [favoriteData, imdbID]);
+
+  useEffect(() => {
+    store.set('storageData', favoriteData);
+  }, [favoriteData]);
 
   return (
     <>
@@ -80,7 +65,14 @@ export const MovieBlock = ({ movieData }: IMovieBlock): JSX.Element => {
         </section>
       </div>
       <ModalPortal>
-        {isModalOpen && <Modal isFavorite={isFavorite} setIsModalOpen={setIsModalOpen} movieData={movieData} />}
+        {isModalOpen && (
+          <Modal
+            isFavorite={isFavorite}
+            setIsFavorite={setIsFavorite}
+            setIsModalOpen={setIsModalOpen}
+            movieData={movieData}
+          />
+        )}
       </ModalPortal>
     </>
   );
