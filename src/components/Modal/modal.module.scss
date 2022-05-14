@@ -20,6 +20,7 @@
   height: 15rem;
   background-color: colors.$WHITE;
   border-radius: 1rem;
+  box-shadow: 0 0 1rem colors.$BLACK50P;
 
   header {
     @include flexbox(center, center);
