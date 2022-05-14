@@ -4,7 +4,7 @@ import { FavoritePage, MainPage } from './pages';
 
 export const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <FetchFavoriteData />
       <NavigationBar />
       <Routes>
