@@ -76,6 +76,8 @@
 
 ### [로딩창 구현 - 비동기 처리와 Promise](https://chichoon.tistory.com/520)
 
+### [즐겨찾기 Modal 구현 - react-portal](https://chichoon.tistory.com/527)
+
 ### [데이터 배열 파싱 및 조작 - lodash](https://chichoon.tistory.com/523)
 
 ### [(보너스) 드래그 앤 드롭 = react-beautiful-dnd](https://chichoon.tistory.com/525)
