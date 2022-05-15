@@ -1,8 +1,8 @@
 # 원티드 프리온보딩 과제 01 영화 검색 앱
 
-![May-15-2022 01-17-09](https://user-images.githubusercontent.com/37893979/168440145-0f6dc974-a65b-40b0-8a74-e18d24d971c7.gif)
-
 ## [배포 페이지](https://chichoon.github.io/wanted-movie-app)
+
+![May-15-2022 01-17-09](https://user-images.githubusercontent.com/37893979/168440145-0f6dc974-a65b-40b0-8a74-e18d24d971c7.gif)
 
 ## 사용방법
 
