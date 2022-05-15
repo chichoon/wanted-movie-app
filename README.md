@@ -64,7 +64,7 @@
 
 ### [220514 (배포)](https://chichoon.tistory.com/524)
 
-## 사용한 라이브러리와 기술 정리글 모음
+## 사용한 라이브러리와 기술 공부 + 정리글 모음
 
 ### [무한스크롤 - intersectionObserver](https://chichoon.tistory.com/514)
 
