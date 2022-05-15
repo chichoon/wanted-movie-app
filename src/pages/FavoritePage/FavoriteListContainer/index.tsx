@@ -34,11 +34,11 @@ export const FavoriteListContainer = () => {
             <ul className={styles.favoriteUL} {...droppableProv.droppableProps} ref={droppableProv.innerRef}>
               {favoriteData.Movies.map((v: IMovie, i: number) => (
                 <Draggable key={`fav-list-${v.imdbID}`} draggableId={`fav-list-${v.imdbID}`} index={i}>
-                  {(DraggableProv) => (
+                  {(draggableProv) => (
                     <li
-                      ref={DraggableProv.innerRef}
-                      {...DraggableProv.dragHandleProps}
-                      {...DraggableProv.draggableProps}
+                      ref={draggableProv.innerRef}
+                      {...draggableProv.dragHandleProps}
+                      {...draggableProv.draggableProps}
                     >
                       <MovieBlock movieData={v} />
                     </li>
